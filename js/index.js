@@ -48,4 +48,4 @@ function displayGameResult(playerChoice) {
   }
 }
 
-displayGameResult("Rock");
+displayGameResult("Scissors");
