@@ -25,6 +25,12 @@ function displayGameResult(playerChoice) {
     (playerChoice === "Scissors" && computerChoice === "Rock")
   ) {
     displayLose(playerChoice, computerChoice);
+  } else if (
+    (computerChoice === "Rock" && playerChoice === "Paper") ||
+    (computerChoice === "Paper" && playerChoice === "Scissors") ||
+    (computerChoice === "Scissors" && playerChoice === "Rock")
+  ) {
+    displayWin(playerChoice, computerChoice);
   }
 }
 
