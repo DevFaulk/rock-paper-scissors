@@ -19,12 +19,12 @@ function displayGameResult(playerChoice) {
   let computerChoice = getComputerChoice();
   if (playerChoice === computerChoice) {
     displayTie(playerChoice, computerChoice);
-  }
-  if (playerChoice === "Rock" && computerChoice === "Paper") {
-    displayTie(playerChoice, computerChoice);
-  }
-  if (playerChoice === computerChoice) {
-    displayTie(playerChoice, computerChoice);
+  } else if (
+    (playerChoice === "Rock" && computerChoice === "Paper") ||
+    (playerChoice === "Paper" && computerChoice === "Scissors") ||
+    (playerChoice === "Scissors" && computerChoice === "Rock")
+  ) {
+    displayLose(playerChoice, computerChoice);
   }
 }
 
