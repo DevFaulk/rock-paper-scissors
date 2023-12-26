@@ -15,18 +15,18 @@ function displayWin(playerChoice, computerChoice) {
   console.log(`
   You chose: ${playerChoice}
   Computer chose: ${computerChoice}
-  Result: You win!`);
+  Result: You win! ${playerChoice} beats ${computerChoice}`);
 }
 function displayLose(playerChoice, computerChoice) {
   console.log(`You chose: ${playerChoice}
   Computer chose: ${computerChoice}
-  Result: You lose.`);
+  Result: You lose. ${computerChoice} beats ${playerChoice}`);
 }
 function displayTie(playerChoice, computerChoice) {
   console.log(`
   You chose: ${playerChoice}
   Computer chose: ${computerChoice}
-  Result: Tie!`);
+  Result: Tie! You both selected ${playerChoice}`);
 }
 
 function displayGameResult(playerChoice) {
