@@ -49,6 +49,9 @@ function displayGameResult(playerChoice) {
   ) {
     return displayWin(playerChoice, computerChoice);
   }
+  else {
+    return displayGameResult(prompt("Make another selection"))
+  }
 }
 
 alert(displayGameResult(prompt("What's your choice?")))
