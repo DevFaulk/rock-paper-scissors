@@ -12,19 +12,19 @@ function getComputerChoice() {
 }
 
 function displayWin(playerChoice, computerChoice) {
-  return `You chose: ${playerChoice}
+  console.log(`You chose: ${playerChoice}
       Computer chose: ${computerChoice}
-      Result: You win!`;
+      Result: You win!`);
 }
 function displayLose(playerChoice, computerChoice) {
-  return `You chose: ${playerChoice}
+  console.log(`You chose: ${playerChoice}
       Computer chose: ${computerChoice}
-      Result: You lose.`;
+      Result: You lose.`);
 }
 function displayTie(playerChoice, computerChoice) {
-  return `You chose: ${playerChoice}
+  console.log(`You chose: ${playerChoice}
       Computer chose: ${computerChoice}
-      Result: Tie!`;
+      Result: Tie!`);
 }
 
 function displayGameResult(playerChoice) {
@@ -46,4 +46,4 @@ function displayGameResult(playerChoice) {
   }
 }
 
-console.log(getComputerChoice());
+displayGameResult("Rock")
