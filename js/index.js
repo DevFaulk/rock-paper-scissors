@@ -12,40 +12,43 @@ function getComputerChoice() {
 }
 
 function displayWin(playerChoice, computerChoice) {
-  console.log(`
-  You chose: ${playerChoice}
-  Computer chose: ${computerChoice}
-  Result: You win! ${playerChoice} beats ${computerChoice}`);
+  return `You chose: ${playerChoice}
+Computer chose: ${computerChoice}
+Result: You win! ${playerChoice} beats ${computerChoice}`;
 }
 function displayLose(playerChoice, computerChoice) {
-  console.log(`You chose: ${playerChoice}
-  Computer chose: ${computerChoice}
-  Result: You lose. ${computerChoice} beats ${playerChoice}`);
+  return `You chose: ${playerChoice}
+Computer chose: ${computerChoice}
+Result: You lose. ${computerChoice} beats ${playerChoice}`;
 }
 function displayTie(playerChoice, computerChoice) {
-  console.log(`
-  You chose: ${playerChoice}
-  Computer chose: ${computerChoice}
-  Result: Tie! You both selected ${playerChoice}`);
+  return `You chose: ${playerChoice}
+Computer chose: ${computerChoice}
+Result: Tie! You both selected ${playerChoice}`;
+}
+
+function caseCheck(playerChoice) {
+  return playerChoice[0].toUpperCase() + playerChoice.slice(1).toLowerCase();
 }
 
 function displayGameResult(playerChoice) {
   let computerChoice = getComputerChoice();
+  playerChoice = caseCheck(playerChoice);
   if (playerChoice === computerChoice) {
-    displayTie(playerChoice, computerChoice);
+    return displayTie(playerChoice, computerChoice);
   } else if (
     (playerChoice === "Rock" && computerChoice === "Paper") ||
     (playerChoice === "Paper" && computerChoice === "Scissors") ||
     (playerChoice === "Scissors" && computerChoice === "Rock")
   ) {
-    displayLose(playerChoice, computerChoice);
+    return displayLose(playerChoice, computerChoice);
   } else if (
     (computerChoice === "Rock" && playerChoice === "Paper") ||
     (computerChoice === "Paper" && playerChoice === "Scissors") ||
     (computerChoice === "Scissors" && playerChoice === "Rock")
   ) {
-    displayWin(playerChoice, computerChoice);
+    return displayWin(playerChoice, computerChoice);
   }
 }
 
-displayGameResult("Scissors");
+alert(displayGameResult(prompt("What's your choice?")))
