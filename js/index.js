@@ -61,7 +61,14 @@ function displayGameResult(playerChoice) {
 }
 function game() {
   for (let i = 0; i <= 4; ++i) {
-    alert(displayGameResult(prompt(`Game: ${i + 1} What's your choice?`)));
+    alert(
+      displayGameResult(
+        prompt(`Game: ${i + 1} What's your choice?
+Wins: ${winCount}
+Losses: ${loseCount}
+Ties: ${tieCount}`)
+      )
+    );
   }
 }
 
