@@ -1,5 +1,8 @@
 "use strict";
 
+let displayWinner = document.getElementById("displayWinner");
+let playerScore = document.getElementById("playerScore");
+
 let winCount = 0;
 let loseCount = 0;
 let tieCount = 0;
@@ -17,18 +20,21 @@ function getComputerChoice() {
 
 function displayWin(playerChoice, computerChoice) {
   winCount++;
+  displayWinner.innerText = "You Won!";
   return `You chose: ${playerChoice}
 Computer chose: ${computerChoice}
 Result: You win! ${playerChoice} beats ${computerChoice}`;
 }
 function displayLose(playerChoice, computerChoice) {
   loseCount++;
+  displayWinner.innerText = "You Lose, computer wins!";
   return `You chose: ${playerChoice}
 Computer chose: ${computerChoice}
 Result: You lose. ${computerChoice} beats ${playerChoice}`;
 }
 function displayTie(playerChoice, computerChoice) {
   tieCount++;
+  displayWinner.innerHTML = "Game tied, nobody wins!";
   return `You chose: ${playerChoice}
 Computer chose: ${computerChoice}
 Result: Tie! You both selected ${playerChoice}`;
@@ -69,6 +75,30 @@ Losses: ${loseCount}
 Ties: ${tieCount}`)
       )
     );
+  }
+  if (
+    winCount === loseCount ||
+    (winCount === loseCount && tieCount > loseCount)
+  ) {
+    displayWinner.innerText = "Game Tied!";
+    playerScore.innerText = `
+Wins: ${winCount}
+Losses: ${loseCount}
+Ties: ${tieCount}`;
+  }
+  if (winCount < loseCount) {
+    displayWinner.innerText = "Game lost! Computer Won!";
+    playerScore.innerText = `
+Wins: ${winCount}
+Losses: ${loseCount}
+Ties: ${tieCount}`;
+  }
+  if (winCount > loseCount) {
+    displayWinner.innerText = "You won! You beat the computer!";
+    playerScore.innerText = `
+Wins: ${winCount}
+Losses: ${loseCount}
+Ties: ${tieCount}`;
   }
 }
 
