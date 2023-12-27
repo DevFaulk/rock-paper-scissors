@@ -2,10 +2,14 @@
 
 let displayWinner = document.getElementById("displayWinner");
 let playerScore = document.getElementById("playerScore");
+let startGame = document.getElementById("startGame");
+let restartGame = document.getElementById("restartGame");
 
 let winCount = 0;
 let loseCount = 0;
 let tieCount = 0;
+
+let gameStateFinished = false;
 
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * 10);
@@ -65,7 +69,7 @@ function displayGameResult(playerChoice) {
     return displayGameResult(prompt("Make another selection"));
   }
 }
-function game() {
+startGame.onclick = function game() {
   for (let i = 0; i <= 4; ++i) {
     alert(
       displayGameResult(
@@ -76,6 +80,7 @@ Ties: ${tieCount}`)
       )
     );
   }
+  gameStateFinished = true;
   if (
     winCount === loseCount ||
     (winCount === loseCount && tieCount > loseCount)
@@ -85,21 +90,28 @@ Ties: ${tieCount}`)
 Wins: ${winCount}
 Losses: ${loseCount}
 Ties: ${tieCount}`;
-  }
-  if (winCount < loseCount) {
+  } else if (winCount < loseCount) {
     displayWinner.innerText = "Game lost! Computer Won!";
     playerScore.innerText = `
 Wins: ${winCount}
 Losses: ${loseCount}
 Ties: ${tieCount}`;
-  }
-  if (winCount > loseCount) {
+  } else if (winCount > loseCount) {
     displayWinner.innerText = "You won! You beat the computer!";
     playerScore.innerText = `
-Wins: ${winCount}
+Wins: ${winCount}d
 Losses: ${loseCount}
 Ties: ${tieCount}`;
   }
-}
+  if (gameStateFinished == true) {
+    startGame.style.display = "none";
+    restartGame.style.display = "inline";
+  } else if (gameStateFinished == false) {
+    startGame.style.display = "inline";
+    restartGame.style.display = "none";
+  }
+};
 
-game();
+restartGame.onclick = function () {
+  window.location.reload();
+};
