@@ -1,5 +1,9 @@
 "use strict";
 
+let winCount = 0;
+let loseCount = 0;
+let tieCount = 0;
+
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * 10);
   if (randomChoice < 3) {
@@ -12,16 +16,19 @@ function getComputerChoice() {
 }
 
 function displayWin(playerChoice, computerChoice) {
+  winCount++;
   return `You chose: ${playerChoice}
 Computer chose: ${computerChoice}
 Result: You win! ${playerChoice} beats ${computerChoice}`;
 }
 function displayLose(playerChoice, computerChoice) {
+  loseCount++;
   return `You chose: ${playerChoice}
 Computer chose: ${computerChoice}
 Result: You lose. ${computerChoice} beats ${playerChoice}`;
 }
 function displayTie(playerChoice, computerChoice) {
+  tieCount++;
   return `You chose: ${playerChoice}
 Computer chose: ${computerChoice}
 Result: Tie! You both selected ${playerChoice}`;
@@ -48,10 +55,14 @@ function displayGameResult(playerChoice) {
     (computerChoice === "Scissors" && playerChoice === "Rock")
   ) {
     return displayWin(playerChoice, computerChoice);
+  } else {
+    return displayGameResult(prompt("Make another selection"));
   }
-  else {
-    return displayGameResult(prompt("Make another selection"))
+}
+function game() {
+  for (let i = 0; i <= 4; ++i) {
+    alert(displayGameResult(prompt(`Game: ${i + 1} What's your choice?`)));
   }
 }
 
-alert(displayGameResult(prompt("What's your choice?")))
+game();
