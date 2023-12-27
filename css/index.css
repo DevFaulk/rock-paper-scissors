@@ -9,15 +9,15 @@ body {
 }
 
 .page-header {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .game-button {
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  height: 84px;
-  width: 200px;
+  height: 62px;
+  width: 160px;
   color: azure;
   background-color: rgb(29, 157, 255);
   border: ridge 4px rgb(0, 0, 0);
