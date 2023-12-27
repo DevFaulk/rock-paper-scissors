@@ -1,27 +1,45 @@
 "use strict";
-
+// Global Declarations
 let displayWinner = document.getElementById("displayWinner");
 let playerScore = document.getElementById("playerScore");
 let startGame = document.getElementById("startGame");
 let restartGame = document.getElementById("restartGame");
-
+//
+// Default Declarations
 let winCount = 0;
 let loseCount = 0;
 let tieCount = 0;
-
+let roundCount = 0;
+let turnCount = 0;
 let gameStateFinished = false;
-
-function getComputerChoice() {
-  let randomChoice = Math.floor(Math.random() * 10);
-  if (randomChoice < 3) {
-    return "Rock";
-  } else if (randomChoice >= 3 && randomChoice <= 6) {
-    return "Paper";
-  } else if (randomChoice > 6) {
-    return "Scissors";
+//
+// Player Settings
+let maxRounds = 5;
+//
+// Game Logic Functions
+function calculateGameResult(playerChoice) {
+  let computerChoice = getComputerChoice();
+  playerChoice = caseCheck(playerChoice);
+  if (playerChoice === computerChoice) {
+    return displayTie(playerChoice, computerChoice);
+  } else if (
+    (playerChoice === "Rock" && computerChoice === "Paper") ||
+    (playerChoice === "Paper" && computerChoice === "Scissors") ||
+    (playerChoice === "Scissors" && computerChoice === "Rock")
+  ) {
+    return displayLose(playerChoice, computerChoice);
+  } else if (
+    (computerChoice === "Rock" && playerChoice === "Paper") ||
+    (computerChoice === "Paper" && playerChoice === "Scissors") ||
+    (computerChoice === "Scissors" && playerChoice === "Rock")
+  ) {
+    return displayWin(playerChoice, computerChoice);
+  } else {
+    return calculateGameResult(prompt("Make another selection"));
   }
 }
-
+//
+// Game GUI Functions
 function displayWin(playerChoice, computerChoice) {
   winCount++;
   displayWinner.innerText = "You Won!";
@@ -43,42 +61,28 @@ function displayTie(playerChoice, computerChoice) {
 Computer chose: ${computerChoice}
 Result: Tie! You both selected ${playerChoice}`;
 }
-
-function caseCheck(playerChoice) {
-  return playerChoice[0].toUpperCase() + playerChoice.slice(1).toLowerCase();
-}
-
-function displayGameResult(playerChoice) {
-  let computerChoice = getComputerChoice();
-  playerChoice = caseCheck(playerChoice);
-  if (playerChoice === computerChoice) {
-    return displayTie(playerChoice, computerChoice);
-  } else if (
-    (playerChoice === "Rock" && computerChoice === "Paper") ||
-    (playerChoice === "Paper" && computerChoice === "Scissors") ||
-    (playerChoice === "Scissors" && computerChoice === "Rock")
-  ) {
-    return displayLose(playerChoice, computerChoice);
-  } else if (
-    (computerChoice === "Rock" && playerChoice === "Paper") ||
-    (computerChoice === "Paper" && playerChoice === "Scissors") ||
-    (computerChoice === "Scissors" && playerChoice === "Rock")
-  ) {
-    return displayWin(playerChoice, computerChoice);
-  } else {
-    return displayGameResult(prompt("Make another selection"));
+//
+// Computer Functions
+function getComputerChoice() {
+  let randomChoice = Math.floor(Math.random() * 10);
+  if (randomChoice < 3) {
+    return "Rock";
+  } else if (randomChoice >= 3 && randomChoice <= 6) {
+    return "Paper";
+  } else if (randomChoice > 6) {
+    return "Scissors";
   }
 }
+
 startGame.onclick = function game() {
-  for (let i = 0; i <= 4; ++i) {
-    alert(
-      displayGameResult(
-        prompt(`Game: ${i + 1} What's your choice?
-Wins: ${winCount}
+  for (let i = 0; i <= maxRounds; ++i) {
+    roundDisplay.innerText = `Round: ${i + 1}`
+
+`Wins: ${winCount}
 Losses: ${loseCount}
-Ties: ${tieCount}`)
-      )
-    );
+Ties: ${tieCount}`
+      
+    ;
   }
   gameStateFinished = true;
   if (
