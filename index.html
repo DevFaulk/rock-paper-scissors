@@ -15,9 +15,20 @@
     <main>
       <h3>Press start game to play!</h3>
       <div style="display: none" class="game-div" id="gameDiv">
-        <h3 style="display: none">What's your choice?</h3>
-        <h1 id="displayWinner"></h1>
-        <h2 id="playerScore"></h2>
+        <div class="game-head" id="gameHead">
+          <h2 id="displayPlayerScore"></h2>
+          <h2 id="displayRound"></h2>
+        </div>
+        <div id="playerSelectScreen">
+          <h3 style="display: none">What's your choice?</h3>
+        </div>
+        <div id="battleScreen">
+          <h3 style="display: none">Battling...</h3>
+        </div>
+        <div id="roundOverScreen"></div>
+        <div id="gameOverScreen">
+          <h1 id="displayWinner"></h1>
+        </div>
       </div>
       <div id="gameButtons">
         <button
