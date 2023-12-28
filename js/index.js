@@ -4,6 +4,7 @@ let displayWinner = document.getElementById("displayWinner");
 let playerScore = document.getElementById("playerScore");
 let startGame = document.getElementById("startGame");
 let restartGame = document.getElementById("restartGame");
+let gameDiv = document.getElementById("gameDiv");
 //
 // Default Declarations
 let winCount = 0;
@@ -17,6 +18,16 @@ let gameStateFinished = false;
 let maxRounds = 5;
 //
 // Game Logic Functions
+startGame.onclick = function game() {
+  for (let i = 0; i <= maxRounds; ++i) {
+    roundDisplay.innerText = `Round: ${i + 1}`;
+    winDisplay.innerText = `Wins: ${winCount}`;
+    loseDisplay.innerText = `Losses: ${loseCount}`;
+    tieDisplay.innerText = `Ties: ${tieCount}`;
+  }
+  gameStateFinished = true;
+};
+
 function calculateGameResult(playerChoice) {
   let computerChoice = getComputerChoice();
   playerChoice = caseCheck(playerChoice);
@@ -73,48 +84,6 @@ function getComputerChoice() {
     return "Scissors";
   }
 }
-
-startGame.onclick = function game() {
-  for (let i = 0; i <= maxRounds; ++i) {
-    roundDisplay.innerText = `Round: ${i + 1}`
-
-`Wins: ${winCount}
-Losses: ${loseCount}
-Ties: ${tieCount}`
-      
-    ;
-  }
-  gameStateFinished = true;
-  if (
-    winCount === loseCount ||
-    (winCount === loseCount && tieCount > loseCount)
-  ) {
-    displayWinner.innerText = "Game Tied!";
-    playerScore.innerText = `
-Wins: ${winCount}
-Losses: ${loseCount}
-Ties: ${tieCount}`;
-  } else if (winCount < loseCount) {
-    displayWinner.innerText = "Game lost! Computer Won!";
-    playerScore.innerText = `
-Wins: ${winCount}
-Losses: ${loseCount}
-Ties: ${tieCount}`;
-  } else if (winCount > loseCount) {
-    displayWinner.innerText = "You won! You beat the computer!";
-    playerScore.innerText = `
-Wins: ${winCount}d
-Losses: ${loseCount}
-Ties: ${tieCount}`;
-  }
-  if (gameStateFinished == true) {
-    startGame.style.display = "none";
-    restartGame.style.display = "inline";
-  } else if (gameStateFinished == false) {
-    startGame.style.display = "inline";
-    restartGame.style.display = "none";
-  }
-};
 
 restartGame.onclick = function () {
   window.location.reload();

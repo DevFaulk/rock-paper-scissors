@@ -8,24 +8,36 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <h1 class="page-header">Rock Paper Scissors</h1>
-    <h3>What's your choice?</h3>
-    <h1 id="displayWinner"></h1>
-    <h2 id="playerScore"></h2>
-    <button
-      id="startGame"
-      class="game-button"
-      type="button"
-      style="display: inline">
-      Start Game
-    </button>
-    <button
-      id="restartGame"
-      class="game-button"
-      type="button"
-      style="display: none">
-      Restart Game
-    </button>
+    <header>
+      <h1 class="page-header">Rock Paper Scissors</h1>
+    </header>
+
+    <main>
+      <h3>Press start game to play!</h3>
+      <div style="display: none" class="game-div" id="gameDiv">
+        <h3 style="display: none">What's your choice?</h3>
+        <h1 id="displayWinner"></h1>
+        <h2 id="playerScore"></h2>
+      </div>
+      <div id="gameButtons">
+        <button
+          id="startGame"
+          class="game-button"
+          type="button"
+          style="display: inline">
+          Start Game
+        </button>
+        <button
+          id="restartGame"
+          class="game-button"
+          type="button"
+          style="display: none">
+          Restart Game
+        </button>
+      </div>
+    </main>
+
+    <footer>DevFaulk 2023</footer>
     <script src="js/index.js"></script>
   </body>
 </html>
