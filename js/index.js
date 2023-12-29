@@ -1,90 +1,93 @@
-"use strict";
-// Global Declarations
-let displayWinner = document.getElementById("displayWinner");
-let playerScore = document.getElementById("playerScore");
-let startGame = document.getElementById("startGame");
-let restartGame = document.getElementById("restartGame");
-let gameDiv = document.getElementById("gameDiv");
-//
-// Default Declarations
-let winCount = 0;
-let loseCount = 0;
-let tieCount = 0;
-let roundCount = 0;
-let turnCount = 0;
-let gameStateFinished = false;
-//
-// Player Settings
-let maxRounds = 5;
-//
-// Game Logic Functions
-startGame.onclick = function game() {
-  for (let i = 0; i <= maxRounds; ++i) {
-    roundDisplay.innerText = `Round: ${i + 1}`;
-    winDisplay.innerText = `Wins: ${winCount}`;
-    loseDisplay.innerText = `Losses: ${loseCount}`;
-    tieDisplay.innerText = `Ties: ${tieCount}`;
-  }
-  gameStateFinished = true;
-};
+// FUNCTIONALITY:
+// on load of window = start game scene function that loads UI Elements
 
-function calculateGameResult(playerChoice) {
-  let computerChoice = getComputerChoice();
-  playerChoice = caseCheck(playerChoice);
-  if (playerChoice === computerChoice) {
-    return displayTie(playerChoice, computerChoice);
-  } else if (
-    (playerChoice === "Rock" && computerChoice === "Paper") ||
-    (playerChoice === "Paper" && computerChoice === "Scissors") ||
-    (playerChoice === "Scissors" && computerChoice === "Rock")
-  ) {
-    return displayLose(playerChoice, computerChoice);
-  } else if (
-    (computerChoice === "Rock" && playerChoice === "Paper") ||
-    (computerChoice === "Paper" && playerChoice === "Scissors") ||
-    (computerChoice === "Scissors" && playerChoice === "Rock")
-  ) {
-    return displayWin(playerChoice, computerChoice);
-  } else {
-    return calculateGameResult(prompt("Make another selection"));
-  }
-}
-//
-// Game GUI Functions
-function displayWin(playerChoice, computerChoice) {
-  winCount++;
-  displayWinner.innerText = "You Won!";
-  return `You chose: ${playerChoice}
-Computer chose: ${computerChoice}
-Result: You win! ${playerChoice} beats ${computerChoice}`;
-}
-function displayLose(playerChoice, computerChoice) {
-  loseCount++;
-  displayWinner.innerText = "You Lose, computer wins!";
-  return `You chose: ${playerChoice}
-Computer chose: ${computerChoice}
-Result: You lose. ${computerChoice} beats ${playerChoice}`;
-}
-function displayTie(playerChoice, computerChoice) {
-  tieCount++;
-  displayWinner.innerHTML = "Game tied, nobody wins!";
-  return `You chose: ${playerChoice}
-Computer chose: ${computerChoice}
-Result: Tie! You both selected ${playerChoice}`;
-}
-//
-// Computer Functions
-function getComputerChoice() {
-  let randomChoice = Math.floor(Math.random() * 10);
-  if (randomChoice < 3) {
-    return "Rock";
-  } else if (randomChoice >= 3 && randomChoice <= 6) {
-    return "Paper";
-  } else if (randomChoice > 6) {
-    return "Scissors";
-  }
-}
+// start game button clicked = anonymous function () {
 
-restartGame.onclick = function () {
-  window.location.reload();
-};
+// 	clearGameWindow function
+	
+// 	run Gameplay Loop Scenes function
+	
+// }
+
+// restart game button clicked = anonymous function () {
+
+// 	clearGameWindow function
+// 	run Gameplay Loop Scenes function
+	
+// }
+
+// end game button clicked = reload window
+
+// function clearGameWindow(type) {
+// 	if(type == header){
+// 		gameboxHeader.innerHTML = nothing
+// 	}
+// 	else if(type == body){
+// 		gamebox.innerHTML = nothing
+// 	}
+// }
+
+// LOGIC:
+// function calculateComputerChoice {
+// 	calculate random choice
+// 	return ranom choice
+// }
+
+// function calculateRoundDecision {
+// 	compare player to computer
+// 	send decision to game header ui update function
+// 	return decision
+// }
+
+// function updateGameHeaderUI {
+// 	update round count out of max rounds (ex: 2/5)
+// 	update player's wins
+// 	update player's losses
+// 	update player's ties
+// }
+
+// function calculateGameResult {
+// 	calculate players wins vs losses vs ties
+// 	return game result
+// }
+
+// GAME:
+// function Gameplay Loop Scenes {
+// 	display gameplay header
+	
+// 	Loop for as many max rounds selected {
+	
+// 		function Player Select Scene:
+// 			load player choices that take response
+// 			wait for response
+// 			save player response
+// 			clear game ui 
+	
+// 		function Battle and Result Scene:
+// 			load player choice
+// 			load computer choice
+// 			load battle ui
+// 			calculate result of battle
+// 			display result of battle
+// 			clear game ui
+	
+// 		if(game not ended){
+		
+// 			function Round Transition Scene:
+// 				display next round with number (ex: Round 2...)
+// 				continue loop
+// 		}
+// 		else if(game over){
+// 			Run End Game Scene Function()
+// 		}
+// 	}
+// }
+
+// function End Game Scene {
+// 	clearGameWindow(header)
+// 	display game header as main content under alias final game score
+// 	run calculate decision function ()
+// 	display that game decision as main content, bigger than game score
+// 	create restart game button
+// 	create end game button
+// }
