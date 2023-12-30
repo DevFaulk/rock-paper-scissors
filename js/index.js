@@ -1,3 +1,8 @@
+// * DOM Declarations
+let gameBox = document.getElementById("gameBox");
+let gameHeader = document.getElementById("gameHeader");
+let gameBody = document.getElementById("gameBody");
+
 // ? FUNCTIONALITY:
 
 window.onload = createStartGameScene;
@@ -18,6 +23,37 @@ let startGameButton = document.querySelector(".start-game-button");
 function beginGame() {
   clearGameWindow("start");
   startGameplayLoop();
+}
+
+function createHeaderCounters() {
+  let roundCounter = document.createElement("h4");
+  let winCounter = document.createElement("h4");
+  let loseCounter = document.createElement("h4");
+  let tieCounter = document.createElement("h4");
+  roundCounter.id = "roundCounter";
+  winCounter.id = "winCounter";
+  loseCounter.id = "loseCounter";
+  tieCounter.id = "tieCounter";
+  roundCounter.textContent = "Round 1/5";
+  winCounter.textContent = "Wins: 0";
+  loseCounter.textContent = "Losses: 0";
+  tieCounter.textContent = "Ties: 0";
+  gameHeader.appendChild(roundCounter);
+  gameHeader.appendChild(winCounter);
+  gameHeader.appendChild(loseCounter);
+  gameHeader.appendChild(tieCounter);
+}
+
+function showGameElements() {
+  gameBox.style.display = "flex";
+  gameHeader.style.display = "flex";
+  gameBody.style.display = "flex";
+}
+
+function hideGameElements() {
+  gameBox.style.display = "none";
+  gameHeader.style.display = "none";
+  gameBody.style.display = "none";
 }
 
 // restart game button clicked = anonymous function () {
@@ -82,15 +118,10 @@ function createStartGameScene() {
 // * RESULT SCENE
 
 function startGameplayLoop() {
-  let gameBox = document.getElementById("gameBox");
-  let gameHeader = document.getElementById("gameHeader");
-  let gameBody = document.getElementById("gameBody");
-  console.log("a");
-
-  gameBox.style.display = "flex";
-  gameHeader.style.display = "flex";
-  gameBody.style.display = "flex";
+  showGameElements();
+  createHeaderCounters();
 }
+
 // function Gameplay Loop Scenes {
 // 	display gameplay header
 
