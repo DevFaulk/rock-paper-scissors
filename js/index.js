@@ -124,6 +124,8 @@ function startGameplayLoop() {
 
   function loadPlayerSelectScene() {
     clearGameWindow("body");
+    gameBody.style.flexDirection = "row";
+    gameBody.style.justifyContent = "space-between";
     let choices = ["rock", "paper", "scissor"];
     choices.forEach(function (choice) {
       let div = document.createElement("div");
