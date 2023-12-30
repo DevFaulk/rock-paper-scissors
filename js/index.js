@@ -120,6 +120,27 @@ function createStartGameScene() {
 function startGameplayLoop() {
   showGameElements();
   createHeaderCounters();
+  loadPlayerSelectScene();
+
+  function loadPlayerSelectScene() {
+    clearGameWindow("body");
+    let choices = ["rock", "paper", "scissor"];
+    choices.forEach(function (choice) {
+      let div = document.createElement("div");
+      div.className = `${choice}-choice`;
+      gameBody.appendChild(div);
+      let img = document.createElement("img");
+      img.className = `choice-img`;
+      img.id = `${choice}Img`;
+      img.alt = `Choose ${choice}, a hand mimicking ${choice}`;
+      img.src = `/img/Rock-paper-scissors_(${choice}).png`;
+      div.appendChild(img);
+      let p = document.createElement("p");
+      p.className = `${choice}-choice-text`;
+      p.textContent = `Choose: ${choice}`;
+      div.appendChild(p);
+    });
+  }
 }
 
 // function Gameplay Loop Scenes {
