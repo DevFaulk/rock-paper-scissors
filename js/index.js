@@ -1,35 +1,23 @@
-// FUNCTIONALITY:
+// ? FUNCTIONALITY:
 
 window.onload = createStartGameScene;
 
-function createStartGameScene() {
-  const mainHTML = document.querySelector("main");
-  const startGameScene = document.createElement("div");
-  const sgHeader = document.createElement("h2");
-  const sgButton = document.createElement("button");
-  startGameScene.className = "start-game-scene";
-  sgHeader.className = "start-game-header";
-  sgHeader.textContent = `Press "Start Game" to play!`;
-  sgButton.className = "start-game-button button";
-  sgButton.textContent = `Start Game`;
-  mainHTML.appendChild(startGameScene);
-  startGameScene.appendChild(sgHeader);
-  startGameScene.appendChild(sgButton);
-}
-
 function clearGameWindow(type) {
-  if (type == header) {
+  if (type == "header") {
     document.querySelector(".game-header").innerHTML = "";
-  } else if (type == body) {
+  } else if (type == "body") {
     document.querySelector(".game-body").innerHTML = "";
+  } else if (type == "start") {
+    const mainHTML = document.querySelector("main");
+    const startDiv = document.getElementById("startGameScene");
+    mainHTML.removeChild(startDiv);
   }
 }
 
-// ? START GAME SCENE
-// ? PLAYER SELECT SCENE
-// ? BATTLE AND RESULT SCENE
-// ? START GAME SCENE
-
+let startGameButton = document.querySelector(".start-game-button");
+function beginGame() {
+  clearGameWindow("start");
+}
 // start game button clicked = anonymous function () {
 
 // 	clearGameWindow function
@@ -47,7 +35,7 @@ function clearGameWindow(type) {
 
 // end game button clicked = reload window
 
-// LOGIC:
+// ? LOGIC:
 // function calculateComputerChoice {
 // 	calculate random choice
 // 	return ranom choice
@@ -71,7 +59,35 @@ function clearGameWindow(type) {
 // 	return game result
 // }
 
-// GAME:
+// ? GAME SETTINGS
+let maxRounds = 5;
+
+// ? GAMEPLAY:
+
+// * START GAME SCENE
+
+function createStartGameScene() {
+  const mainHTML = document.querySelector("main");
+  const startGameScene = document.createElement("div");
+  const sgHeader = document.createElement("h2");
+  const sgButton = document.createElement("button");
+  startGameScene.className = "start-game-scene";
+  startGameScene.id = "startGameScene";
+  sgHeader.className = "start-game-header";
+  sgHeader.textContent = `Press "Start Game" to play!`;
+  sgButton.className = "start-game-button button";
+  sgButton.textContent = `Start Game`;
+  sgButton.setAttribute("onclick", "beginGame()");
+  mainHTML.appendChild(startGameScene);
+  startGameScene.appendChild(sgHeader);
+  startGameScene.appendChild(sgButton);
+}
+// * PLAYER SELECT SCENE
+// * BATTLE AND RESULT SCENE
+// * ROUND TRANSITION SCENE
+// * RESULT SCENE
+
+function startGameplayLoop() {}
 // function Gameplay Loop Scenes {
 // 	display gameplay header
 
