@@ -1,31 +1,51 @@
 // FUNCTIONALITY:
-// on load of window = start game scene function that loads UI Elements
+
+window.onload = createStartGameScene;
+
+function createStartGameScene() {
+  const mainHTML = document.querySelector("main");
+  const startGameScene = document.createElement("div");
+  const sgHeader = document.createElement("h2");
+  const sgButton = document.createElement("button");
+  startGameScene.className = "start-game-scene";
+  sgHeader.className = "start-game-header";
+  sgHeader.textContent = `Press "Start Game" to play!`;
+  sgButton.className = "start-game-button button";
+  sgButton.textContent = `Start Game`;
+  mainHTML.appendChild(startGameScene);
+  startGameScene.appendChild(sgHeader);
+  startGameScene.appendChild(sgButton);
+}
+
+function clearGameWindow(type) {
+  if (type == header) {
+    document.querySelector(".game-header").innerHTML = "";
+  } else if (type == body) {
+    document.querySelector(".game-body").innerHTML = "";
+  }
+}
+
+// ? START GAME SCENE
+// ? PLAYER SELECT SCENE
+// ? BATTLE AND RESULT SCENE
+// ? START GAME SCENE
 
 // start game button clicked = anonymous function () {
 
 // 	clearGameWindow function
-	
+
 // 	run Gameplay Loop Scenes function
-	
+
 // }
 
 // restart game button clicked = anonymous function () {
 
 // 	clearGameWindow function
 // 	run Gameplay Loop Scenes function
-	
+
 // }
 
 // end game button clicked = reload window
-
-// function clearGameWindow(type) {
-// 	if(type == header){
-// 		gameboxHeader.innerHTML = nothing
-// 	}
-// 	else if(type == body){
-// 		gamebox.innerHTML = nothing
-// 	}
-// }
 
 // LOGIC:
 // function calculateComputerChoice {
@@ -54,15 +74,15 @@
 // GAME:
 // function Gameplay Loop Scenes {
 // 	display gameplay header
-	
+
 // 	Loop for as many max rounds selected {
-	
+
 // 		function Player Select Scene:
 // 			load player choices that take response
 // 			wait for response
 // 			save player response
-// 			clear game ui 
-	
+// 			clear game ui
+
 // 		function Battle and Result Scene:
 // 			load player choice
 // 			load computer choice
@@ -70,9 +90,9 @@
 // 			calculate result of battle
 // 			display result of battle
 // 			clear game ui
-	
+
 // 		if(game not ended){
-		
+
 // 			function Round Transition Scene:
 // 				display next round with number (ex: Round 2...)
 // 				continue loop
