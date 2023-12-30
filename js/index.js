@@ -17,14 +17,8 @@ function clearGameWindow(type) {
 let startGameButton = document.querySelector(".start-game-button");
 function beginGame() {
   clearGameWindow("start");
+  startGameplayLoop();
 }
-// start game button clicked = anonymous function () {
-
-// 	clearGameWindow function
-
-// 	run Gameplay Loop Scenes function
-
-// }
 
 // restart game button clicked = anonymous function () {
 
@@ -87,7 +81,16 @@ function createStartGameScene() {
 // * ROUND TRANSITION SCENE
 // * RESULT SCENE
 
-function startGameplayLoop() {}
+function startGameplayLoop() {
+  let gameBox = document.getElementById("gameBox");
+  let gameHeader = document.getElementById("gameHeader");
+  let gameBody = document.getElementById("gameBody");
+  console.log("a");
+
+  gameBox.style.display = "flex";
+  gameHeader.style.display = "flex";
+  gameBody.style.display = "flex";
+}
 // function Gameplay Loop Scenes {
 // 	display gameplay header
 
